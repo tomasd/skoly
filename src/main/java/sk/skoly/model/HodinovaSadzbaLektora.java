@@ -1,23 +1,32 @@
 package sk.skoly.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class Lekcia extends Entita {
+public class HodinovaSadzbaLektora extends Entita {
+	private ZmluvaLektora zmluvaLektora;
 	private Kurz kurz;
-	private VyucovacieMiesto vyucovacieMiesto;
+	private BigDecimal sadzba;
+
 	private Date zaciatok;
 	private Date koniec;
+	public ZmluvaLektora getZmluvaLektora() {
+		return zmluvaLektora;
+	}
+	public void setZmluvaLektora(ZmluvaLektora zmluvaLektora) {
+		this.zmluvaLektora = zmluvaLektora;
+	}
 	public Kurz getKurz() {
 		return kurz;
 	}
 	public void setKurz(Kurz kurz) {
 		this.kurz = kurz;
 	}
-	public VyucovacieMiesto getVyucovacieMiesto() {
-		return vyucovacieMiesto;
+	public BigDecimal getSadzba() {
+		return sadzba;
 	}
-	public void setVyucovacieMiesto(VyucovacieMiesto vyucovacieMiesto) {
-		this.vyucovacieMiesto = vyucovacieMiesto;
+	public void setSadzba(BigDecimal sadzba) {
+		this.sadzba = sadzba;
 	}
 	public Date getZaciatok() {
 		return zaciatok;
