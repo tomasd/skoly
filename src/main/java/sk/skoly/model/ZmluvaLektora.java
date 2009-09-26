@@ -1,5 +1,8 @@
 package sk.skoly.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ZmluvaLektora extends Entita {
 	private String cisloZmluvy;
 	private String lektor;

@@ -2,13 +2,16 @@ package sk.skoly.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class UcastnikKurzu extends Entita {
 	private Kurz kurz;
 	private Student student;
-	
+
 	private Date zaciatok;
 	private Date koniec;
-	
+
 	private NakladovaSkupina nakladovaSkupina;
 
 	public Kurz getKurz() {
@@ -50,6 +53,5 @@ public class UcastnikKurzu extends Entita {
 	public void setNakladovaSkupina(NakladovaSkupina nakladovaSkupina) {
 		this.nakladovaSkupina = nakladovaSkupina;
 	}
-	
-	
+
 }

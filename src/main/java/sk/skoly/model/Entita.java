@@ -3,14 +3,23 @@ package sk.skoly.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class Entita implements Serializable {
+@MappedSuperclass
+public abstract class Entita implements Serializable {
 	private Integer id;
 	private Date created;
 	private Date updated;
 
+	@Id
+	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}
@@ -46,5 +55,14 @@ public class Entita implements Serializable {
 	public int hashCode() {
 		return new HashCodeBuilder().append(id).toHashCode();
 	}
+
+	@PrePersist
+	public void onCreate() {
+		created = new Date();
+	}
 	
+	@PreUpdate
+	public void onUpdate() {
+		updated = new Date();
+	}
 }

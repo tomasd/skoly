@@ -1,0 +1,6 @@
+.main_menu ul  li {
+	display: inline;
+}
+.main_menu li.selected {
+	font-size: larger;
+}
