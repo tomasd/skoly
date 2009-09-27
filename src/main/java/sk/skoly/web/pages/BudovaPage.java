@@ -19,11 +19,13 @@ import sk.skoly.web.components.listaction.EditPageFactory;
 import sk.skoly.web.components.listaction.ListActionFormPanel.SimplePageFactory;
 
 public class BudovaPage extends AbstractEditPage<SkupinaVyucovacichMiest> {
-	public static final EditPageFactory<SkupinaVyucovacichMiest> EDIT_PAGE_FACTORY = new SimplePageFactory<SkupinaVyucovacichMiest>(BudovaPage.class, "id", "id");
+	public static final EditPageFactory<SkupinaVyucovacichMiest> EDIT_PAGE_FACTORY = new SimplePageFactory<SkupinaVyucovacichMiest>(
+			SkupinaVyucovacichMiest.class, BudovaPage.class, "id", "id");
 
 	@Override
 	protected IModel<SkupinaVyucovacichMiest> getObjectModel() {
-//		return new Model<SkupinaVyucovacichMiest>(SkupinaVyucovacichMiest.getById(getPageParameters().getInt("id")));
+		// return new
+		// Model<SkupinaVyucovacichMiest>(SkupinaVyucovacichMiest.getById(getPageParameters().getInt("id")));
 		return null;
 	}
 

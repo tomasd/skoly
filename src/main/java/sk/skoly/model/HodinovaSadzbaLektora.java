@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class HodinovaSadzbaLektora extends Entita {
@@ -14,6 +15,7 @@ public class HodinovaSadzbaLektora extends Entita {
 	private Date zaciatok;
 	private Date koniec;
 
+	@ManyToOne()
 	public ZmluvaLektora getZmluvaLektora() {
 		return zmluvaLektora;
 	}
@@ -22,6 +24,7 @@ public class HodinovaSadzbaLektora extends Entita {
 		this.zmluvaLektora = zmluvaLektora;
 	}
 
+	@ManyToOne
 	public Kurz getKurz() {
 		return kurz;
 	}

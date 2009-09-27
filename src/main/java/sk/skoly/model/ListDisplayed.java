@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ListDisplayed {
 	String messageKey() default "";
+	int order() default Integer.MAX_VALUE;
 }

@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Prezencka extends Entita {
@@ -16,6 +20,7 @@ public class Prezencka extends Entita {
 	private Date zaciatok;
 	private Date koniec;
 
+	@ManyToOne()
 	public Lekcia getLekcia() {
 		return lekcia;
 	}
@@ -24,6 +29,8 @@ public class Prezencka extends Entita {
 		this.lekcia = lekcia;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public VyucovacieMiesto getVyucovacieMiesto() {
 		return vyucovacieMiesto;
 	}
@@ -32,6 +39,8 @@ public class Prezencka extends Entita {
 		this.vyucovacieMiesto = vyucovacieMiesto;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public Lektor getLektor() {
 		return lektor;
 	}

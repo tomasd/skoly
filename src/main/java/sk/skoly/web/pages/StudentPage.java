@@ -18,15 +18,12 @@ import sk.skoly.web.components.listaction.ListActionFormPanel;
 
 public class StudentPage extends AbstractEditPage<Student> {
 
-	public static EditPageFactory<Student> EDIT_PAGE_FACTORY = new ListActionFormPanel.SimplePageFactory<Student>(StudentPage.class, "id", "id");
+	public static EditPageFactory<Student> EDIT_PAGE_FACTORY = new ListActionFormPanel.SimplePageFactory<Student>(Student.class, StudentPage.class, "id", "id");
 
-	
 	@SuppressWarnings("unchecked")
 	public StudentPage(PageParameters parameters) {
 		super(parameters);
-		DataForm<Student> form = new DataForm<Student>("form", (HibernateObjectModel<Student>) getObject()){
-			
-		};
+		DataForm<Student> form = new DataForm<Student>("form", (HibernateObjectModel<Student>) getObject());
 		ArrayList list = new ArrayList();
 		list.add(new Field.StringField<Student>("priezvisko", "priezvisko"));
 		list.add(new Field.StringField<Student>("meno", "meno"));

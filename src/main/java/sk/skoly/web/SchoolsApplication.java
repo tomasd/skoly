@@ -6,14 +6,11 @@ import net.databinder.hib.DataApplication;
 import net.databinder.hib.HibernateApplication;
 
 import org.apache.wicket.Page;
-import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.event.PreInsertEvent;
 import org.hibernate.event.PreInsertEventListener;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.webapp.WebAppContext;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import sk.skoly.interceptors.AuditInterceptor;
 import sk.skoly.model.Entita;
@@ -36,14 +33,10 @@ import sk.skoly.model.ZmluvaLektora;
 import sk.skoly.web.pages.MainPage;
 
 public class SchoolsApplication extends DataApplication implements HibernateApplication {
-	private WebApplicationContext applicationContext;
 
 	@Override
 	protected void init() {
 		super.init();
-		addComponentInstantiationListener(new SpringComponentInjector(this));
-		ServletContext sc = getServletContext();
-		applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(sc);
 		// mountBookmarkablePage("/", TitlePage.class);
 		// mount(new MixedParamUrlCodingStrategy("building", BuildingPage.class,
 		// new String[]{"id"}));

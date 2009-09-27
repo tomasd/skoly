@@ -1,6 +1,7 @@
 package sk.skoly.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class SkupinaVyucovacichMiest extends Entita {
@@ -9,8 +10,15 @@ public class SkupinaVyucovacichMiest extends Entita {
 	private String psc;
 	private String mesto;
 
+	@ListDisplayed(order=1)
 	public String getNazov() {
 		return nazov;
+	}
+
+	@Transient
+	@ListDisplayed
+	public String getAdresa() {
+		return String.format("%s, %s %s", ulica, psc, mesto);
 	}
 
 	public void setNazov(String nazov) {
@@ -41,4 +49,8 @@ public class SkupinaVyucovacichMiest extends Entita {
 		this.mesto = mesto;
 	}
 
+	@Override
+	public String toString() {
+		return nazov;
+	}
 }

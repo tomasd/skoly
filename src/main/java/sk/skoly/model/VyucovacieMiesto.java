@@ -1,6 +1,10 @@
 package sk.skoly.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class VyucovacieMiesto extends Entita {
@@ -24,6 +28,8 @@ public class VyucovacieMiesto extends Entita {
 		this.obsaditelne = obsaditelne;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public SkupinaVyucovacichMiest getSkupinaVyucovacichMiest() {
 		return skupinaVyucovacichMiest;
 	}

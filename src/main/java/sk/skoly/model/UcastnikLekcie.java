@@ -3,6 +3,10 @@ package sk.skoly.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class UcastnikLekcie extends Entita {
@@ -11,6 +15,7 @@ public class UcastnikLekcie extends Entita {
 	private boolean pritomny;
 	private BigDecimal cena;
 
+	@ManyToOne()
 	public Prezencka getPrezencka() {
 		return prezencka;
 	}
@@ -19,6 +24,8 @@ public class UcastnikLekcie extends Entita {
 		this.prezencka = prezencka;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public UcastnikKurzu getUcastnikKurzu() {
 		return ucastnikKurzu;
 	}

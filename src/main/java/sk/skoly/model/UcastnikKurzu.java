@@ -3,6 +3,10 @@ package sk.skoly.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class UcastnikKurzu extends Entita {
@@ -14,6 +18,7 @@ public class UcastnikKurzu extends Entita {
 
 	private NakladovaSkupina nakladovaSkupina;
 
+	@ManyToOne()
 	public Kurz getKurz() {
 		return kurz;
 	}
@@ -22,6 +27,8 @@ public class UcastnikKurzu extends Entita {
 		this.kurz = kurz;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public Student getStudent() {
 		return student;
 	}
@@ -46,6 +53,8 @@ public class UcastnikKurzu extends Entita {
 		this.koniec = koniec;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public NakladovaSkupina getNakladovaSkupina() {
 		return nakladovaSkupina;
 	}

@@ -1,6 +1,10 @@
 package sk.skoly.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class NakladovaSkupina extends Entita {
@@ -14,7 +18,7 @@ public class NakladovaSkupina extends Entita {
 	public void setNazov(String nazov) {
 		this.nazov = nazov;
 	}
-
+	@ManyToOne()
 	public Kurz getKurz() {
 		return kurz;
 	}

@@ -20,6 +20,7 @@ public class Platca extends Entita {
 	private String www;
 	private String email;
 
+	@ListDisplayed
 	public String getNazov() {
 		return nazov;
 	}
@@ -116,4 +117,8 @@ public class Platca extends Entita {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return nazov;
+	}
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class HodinovaSadzbaNakladovejSkupiny extends Entita {
@@ -12,6 +13,7 @@ public class HodinovaSadzbaNakladovejSkupiny extends Entita {
 	private Date koniec;
 	private BigDecimal sadzba;
 
+	@ManyToOne
 	public NakladovaSkupina getNakladovaSkupina() {
 		return nakladovaSkupina;
 	}

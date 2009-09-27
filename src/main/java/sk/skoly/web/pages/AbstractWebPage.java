@@ -54,7 +54,7 @@ public class AbstractWebPage extends AbstractPage {
 	protected List<Class<? extends WebPage>> getMenuPages() {
 		List<Class<? extends WebPage>> list = new ArrayList<Class<? extends WebPage>>();
 		list.add(MainPage.class);
-		list.add(BudovaListPage.class);
+		list.add(SkupinaVyucovacichMiestListPage.class);
 		list.add(PlatcaListPage.class);
 		list.add(KurzListPage.class);
 		list.add(LektorListPage.class);

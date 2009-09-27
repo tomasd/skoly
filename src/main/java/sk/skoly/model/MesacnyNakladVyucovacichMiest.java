@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class MesacnyNakladVyucovacichMiest extends Entita {
@@ -12,6 +16,7 @@ public class MesacnyNakladVyucovacichMiest extends Entita {
 	private Date koniec;
 	private BigDecimal cena;
 
+	@ManyToOne()
 	public SkupinaVyucovacichMiest getSkupinaVyucovacichMiest() {
 		return skupinaVyucovacichMiest;
 	}

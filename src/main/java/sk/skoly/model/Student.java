@@ -1,8 +1,11 @@
 package sk.skoly.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Student extends Entita {
@@ -45,6 +48,9 @@ public class Student extends Entita {
 		this.titul = titul;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
+	@ListDisplayed
 	public Platca getPlatca() {
 		return platca;
 	}
@@ -117,4 +123,14 @@ public class Student extends Entita {
 		this.email = email;
 	}
 
+	@Transient
+	@ListDisplayed
+	public String getFormatedName() {
+		return String.format("%s, %s", priezvisko, meno);
+	}
+	
+	@Override
+	public String toString() {
+		return getFormatedName();
+	}
 }

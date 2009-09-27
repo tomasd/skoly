@@ -1,6 +1,10 @@
 package sk.skoly.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Kurz extends Entita {
@@ -18,6 +22,8 @@ public class Kurz extends Entita {
 		this.kod = kod;
 	}
 
+	@ManyToOne()
+	@OnDelete(action=OnDeleteAction.NO_ACTION)
 	public Pouzivatel getRealizator() {
 		return realizator;
 	}
@@ -26,6 +32,8 @@ public class Kurz extends Entita {
 		this.realizator = realizator;
 	}
 
+	@ManyToOne()
+	@OnDelete(action=OnDeleteAction.NO_ACTION)
 	public Lektor getLektor() {
 		return lektor;
 	}

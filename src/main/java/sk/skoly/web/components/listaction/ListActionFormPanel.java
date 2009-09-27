@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.databinder.hib.Databinder;
+
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DefaultDataTable;
@@ -30,6 +32,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.util.lang.PropertyResolver;
+import org.hibernate.Session;
 
 @SuppressWarnings("serial")
 public class ListActionFormPanel<T extends Serializable> extends Panel {
@@ -39,14 +42,36 @@ public class ListActionFormPanel<T extends Serializable> extends Panel {
 
 		void doAction(List<T> selected);
 	}
-	
+
+	public static class DeleteAction<T> implements IAction<T> {
+
+		@Override
+		public void doAction(List<T> selected) {
+			Session session = Databinder.getHibernateSession();
+			for (T object : selected) {
+				if (session.contains(object)) {
+					session.delete(object);
+					session.getTransaction().commit();
+				}
+			}
+		}
+
+		@Override
+		public String toString() {
+			return "Delete";
+		}
+
+	}
+
 	public static class SimplePageFactory<T> implements EditPageFactory<T> {
 		private Class<? extends WebPage> pageClass;
 		private String parameterKey;
 		private String objectProperty;
+		private Class<T> type;
 
-		public SimplePageFactory(Class<? extends WebPage> pageClass, String parameterKey, String objectProperty) {
+		public SimplePageFactory(Class<T> type, Class<? extends WebPage> pageClass, String parameterKey, String objectProperty) {
 			super();
+			this.type = type;
 			this.pageClass = pageClass;
 			this.parameterKey = parameterKey;
 			this.objectProperty = objectProperty;
@@ -57,6 +82,11 @@ public class ListActionFormPanel<T extends Serializable> extends Panel {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put(parameterKey, PropertyResolver.getValue(objectProperty, object));
 			return new PageParameters(map);
+		}
+
+		@Override
+		public Class<T> getType() {
+			return type;
 		}
 
 		@Override

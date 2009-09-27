@@ -3,6 +3,10 @@ package sk.skoly.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Lekcia extends Entita {
@@ -11,6 +15,7 @@ public class Lekcia extends Entita {
 	private Date zaciatok;
 	private Date koniec;
 
+	@ManyToOne()
 	public Kurz getKurz() {
 		return kurz;
 	}
@@ -19,6 +24,8 @@ public class Lekcia extends Entita {
 		this.kurz = kurz;
 	}
 
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	public VyucovacieMiesto getVyucovacieMiesto() {
 		return vyucovacieMiesto;
 	}
