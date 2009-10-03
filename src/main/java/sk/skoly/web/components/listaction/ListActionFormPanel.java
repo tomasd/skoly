@@ -155,6 +155,7 @@ public class ListActionFormPanel<T extends Serializable> extends Panel {
 		};
 		add(form);
 		CheckGroup<T> checkGroup = new CheckGroup<T>("selected_rows", new Model((Serializable) selectedObjects));
+		checkGroup.setRenderBodyOnly(true);
 		form.add(checkGroup);
 		form.add(new org.apache.wicket.markup.html.form.Button("do", new StringResourceModel("do", null)));
 		DropDownChoice<IAction> actionDropdown = new DropDownChoice<IAction>("action", new PropertyModel<IAction>(this, "action"), actions);

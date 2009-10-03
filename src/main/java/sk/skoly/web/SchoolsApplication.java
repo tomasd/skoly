@@ -52,6 +52,7 @@ public class SchoolsApplication extends DataApplication implements HibernateAppl
 		// StudentListPage.class));
 		// mount(new QueryStringUrlCodingStrategy("/test/",
 		// TestListPage.class));
+		getMarkupSettings().setStripWicketTags(true);
 	}
 
 	@Override

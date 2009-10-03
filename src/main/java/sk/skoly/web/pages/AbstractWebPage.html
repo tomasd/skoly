@@ -1,12 +1,34 @@
 <wicket:extend>
-	<div wicket:id="menu" class="main_menu"></div>
+	<div id="main">
+		<div id="header">
+			<a href="index.html" class="logo"><img src="img/logo.gif" width="101" height="29" alt="" /></a>
 	
-	<div class="title">
-		<h1 wicket:id="pageMainTitle">Page title</h1>
-	</div>
-	<hr/>
+			<ul wicket:id="menu" id="top-navigation"></ul>
+		</div>
+		<div id="middle">
+			<div id="left-column">
+				<h3>Kurz</h3>
 	
-	<div class="content">
-		<wicket:child/>
+				<ul class="nav">
+					<li><a href="#">Ucastnici kurzu</a></li>
+					<li><a href="#">Lekcie</a></li>
+					<li><a href="#">Lorem dollar</a></li>
+					<li><a href="#">Ipsum dollar</a></li>
+					<li><a href="#">Lorem Ipsum dollar</a></li>
+	
+					<li class="last"><a href="#">Dollar Lorem Ipsum</a></li>
+				</ul>
+				<a href="#" class="link">Link here</a>
+				<a href="#" class="link">Link here</a>
+			</div>
+			<div id="center-column">
+				<wicket:child/>
+			</div>
+			<div id="right-column">
+				<strong class="h">INFO</strong>
+				<div class="box" wicket:id="feedback"></div>
+		  </div>
+		</div>
+		<div id="footer"></div>
 	</div>
 </wicket:extend>

@@ -21,10 +21,10 @@ public class MenuPanel extends Panel {
 				BookmarkablePageLink link = new BookmarkablePageLink("link", item.getModelObject());
 
 				if (getPage().getClass().equals(item.getModelObject())) {
-					link.add(new AttributeAppender("class", new Model("current"), " "));
+					item.add(new AttributeAppender("class", new Model("active"), " "));
 				}
 
-				link.add(new Label("label", getString("menu." + item.getModelObject().getSimpleName())));
+				link.add(new Label("label", getString("menu." + item.getModelObject().getSimpleName())).setRenderBodyOnly(true));
 				item.add(link);
 			}
 		});

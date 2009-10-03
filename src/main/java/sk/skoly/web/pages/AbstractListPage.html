@@ -1,5 +1,12 @@
 <wicket:extend>
-	<wicket:child />
-	<a wicket:id="create"><wicket:message key="button.create"></wicket:message></a>
-	<div wicket:id="action_table"></div>
+			<div class="top-bar">
+				<a wicket:id="create" class="button"><wicket:message key="button.create"></wicket:message></a>
+				<h1 wicket:id="page_title">Page title</h1>
+				<!--<div class="breadcrumbs"><a href="#">Homepage</a> / <a href="#">Contents</a></div>
+			--></div><br />
+		  <div class="select-bar table">
+			<wicket:child/>
+		  </div>
+			<div wicket:id="action_table"></div>
+			
 </wicket:extend>
