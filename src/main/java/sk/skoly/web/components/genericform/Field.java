@@ -131,10 +131,16 @@ public interface Field<Property, MainObject> extends Serializable {
 		private IModel<List<Property>> choicesModel;
 		private List<Property> choices;
 		private IChoiceRenderer<Property> choiceRenderer;
-
+		private boolean nullValid;
+		
 		public CodebookField(String labelResourceKey, String objectProperty, IModel<List<Property>> choices) {
 			super(labelResourceKey, objectProperty);
 			this.choicesModel = choices;
+		}
+		public CodebookField(String labelResourceKey, String objectProperty, IModel<List<Property>> choices, boolean nullValid) {
+			super(labelResourceKey, objectProperty);
+			this.choicesModel = choices;
+			this.nullValid = nullValid;
 		}
 
 		public CodebookField(String labelResourceKey, String objectProperty, List<Property> choices) {
@@ -154,11 +160,18 @@ public interface Field<Property, MainObject> extends Serializable {
 
 		@Override
 		public FormComponent<Property> createComponent(String componentId) {
+			SelectDropdownChoice select;
 			if (choicesModel != null) {
-				return new SelectDropdownChoice(componentId, getPropertyModel(), choicesModel).setChoiceRenderer(choiceRenderer);
+				select = new SelectDropdownChoice(componentId, getPropertyModel(), choicesModel);
+				select.setChoiceRenderer(choiceRenderer);
 			} else {
-				return new SelectDropdownChoice(componentId, getPropertyModel(), choices).setChoiceRenderer(choiceRenderer);
+				select = new SelectDropdownChoice(componentId, getPropertyModel(), choices);
+				select.setChoiceRenderer(choiceRenderer);
 			}
+			if (nullValid) {
+				select.setNullValid(true);
+			}
+			return select;
 		}
 	}
 }

@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.form.Check;
 import org.apache.wicket.markup.html.form.CheckGroup;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.FormComponentLabel;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -156,7 +157,9 @@ public class ListActionFormPanel<T extends Serializable> extends Panel {
 		CheckGroup<T> checkGroup = new CheckGroup<T>("selected_rows", new Model((Serializable) selectedObjects));
 		form.add(checkGroup);
 		form.add(new org.apache.wicket.markup.html.form.Button("do", new StringResourceModel("do", null)));
-		form.add(new DropDownChoice<IAction>("action", new PropertyModel<IAction>(this, "action"), actions).setRequired(true));
+		DropDownChoice<IAction> actionDropdown = new DropDownChoice<IAction>("action", new PropertyModel<IAction>(this, "action"), actions);
+		form.add(actionDropdown.setRequired(true).setLabel(new StringResourceModel("label.action", null)));
+		form.add(new FormComponentLabel("action_label", actionDropdown));
 
 		checkGroup.add(new DefaultDataTable<T>("table", columnsList, dataProvider, rowsPerPage));
 	}
